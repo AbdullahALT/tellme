@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $user = User::with(array('messages' => function($query){
+            $query->orderBy('created_at','DESC');
+        }))->find(1);
+        return view('home.index')->with('user', $user);
     }
 }

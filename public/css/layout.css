@@ -6,6 +6,7 @@
 
 #profile-description {
   padding: 16px;
+  font-size: 1.2em;
 }
 
 #message-list > .message {
@@ -13,7 +14,6 @@
 }
 
 .message-content, .message-comment {
-  font-size: 0.8em;
   padding: .5em .75em;
 }
 
@@ -33,29 +33,18 @@ main {
   font-size: 14px;
 }
 
-.form-group label {
-  font-size: 12px;
-}
-
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
   main {
     font-size: 14px;
   }
 
-  .form-group label {
-    font-size: 12px;
-  }
 }
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (min-width : 480px) {
   main {
     font-size: 14px;
-  }
-
-  .form-group label {
-    font-size: 12px;
   }
 
 }
@@ -66,20 +55,12 @@ main {
     font-size: 14px;
   }
 
-  .form-group label {
-    font-size: 12px;
-  }
-
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
   main {
-    font-size: 20px;
-  }
-
-  .form-group label {
-    font-size: 14px;
+    font-size: 16px;
   }
 
 }
@@ -87,13 +68,8 @@ main {
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
   main {
-    font-size: 20px;
+    font-size: 16px;
   }
-
-  .form-group label {
-    font-size: 14px;
-  }
-
 }
 
 
@@ -103,7 +79,7 @@ main {
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
   main {
-    font-size: 20px;
+    font-size: 16px;
   }
 
 }

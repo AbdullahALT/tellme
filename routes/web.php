@@ -15,6 +15,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::post('/message/create', [
+	'uses' => 'MessageController@create',
+	'as' => 'message.create'
+]);
 
 
