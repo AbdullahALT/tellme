@@ -15,9 +15,18 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+Route::get('/{username}', 'HomeController@profile')->name('profile.public');
+
 Route::post('/message/create', [
 	'uses' => 'MessageController@create',
 	'as' => 'message.create'
 ]);
+
+Route::post('/message/comment', [
+	'uses' => 'MessageController@create',
+	'as' => 'message.comment'
+]);
+
+Route::get('/user/{username}', 'UserController@index')->name('user.index');
 
 

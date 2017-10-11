@@ -35,14 +35,15 @@
 		</div>
 
 		<div id="message-list" class="col-md-12 col-lg-6 order-lg-1 order-md-2">
-			@if(count($user->messages) == 0)
+			@if(count($messages) == 0)
 				<div class="alert alert-secondary">
 					There is no messages for you yet! 
 				</div>
 			@endif
-			@foreach($user->messages as $message)
+			@foreach($messages as $message)
 				@include('partials.message')
 			@endforeach
+			{{$messages->links()}}
 		</div>
 
 	</div>

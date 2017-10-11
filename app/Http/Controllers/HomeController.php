@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::with(array('messages' => function($query){
-            $query->orderBy('created_at','DESC');
-        }))->find(1);
-        return view('home.index')->with('user', $user);
+       return $this->profile('abdullahalt');
+    }
+
+    public function profile($username){
+        //To eager load messages and order them, taken from: https://stackoverflow.com/a/18862651
+        // $user = User::with(array('messages' => function($query){
+        //     $query->orderBy('created_at','DESC');
+        // }))->where('username', $username)->first();
+        // return view('home.index')->with('user', $user);
+        $user = User::where('username', $username)->first();
+        $messages = $user->messages()->orderBy('created_at', 'DESC')->paginate(5);
+        return view('home.index')->with('user', $user)->with('messages', $messages);
     }
 }

@@ -11,10 +11,16 @@
 
 #message-list > .message {
   margin-bottom: 16px;
+  padding-bottom: .5em;
 }
 
 .message-content, .message-comment {
   padding: .5em .75em;
+/*  margin: .5em .75em;
+*/}
+
+.message-margin {
+  margin: .5em .75em;
 }
 
 .message-date {
@@ -25,6 +31,10 @@
 
 #message-write {
   margin-bottom: 16px;
+}
+
+.message textarea {
+  margin-bottom: .5em;
 }
 
 
