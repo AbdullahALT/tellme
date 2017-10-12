@@ -35,7 +35,7 @@ class HomeController extends Controller
         // }))->where('username', $username)->first();
         // return view('home.index')->with('user', $user);
         $user = User::where('username', $username)->first();
-        $messages = $user->messages()->orderBy('created_at', 'DESC')->paginate(5);
+        $messages = $user->messages()->where('published', '1')->orderBy('created_at', 'DESC')->paginate(5);
         return view('home.index')->with('user', $user)->with('messages', $messages);
     }
 }

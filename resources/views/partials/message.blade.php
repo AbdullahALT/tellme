@@ -6,6 +6,8 @@
 			<span class="message-date text-secondary float-right">{{$message->created_at}}</span>
 		</div>
 	<div class="message-comment message-margin bg-white">
-		No dude, it's super secret
+		{{$message->comment}}
 	</div>
 </div>
+
+

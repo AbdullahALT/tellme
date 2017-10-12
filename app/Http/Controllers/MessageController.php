@@ -8,7 +8,7 @@ class MessageController extends Controller
 {
     public function create(Request $request){
     	$this->validate($request, [
-    		'content' => 'required|min:1|max:300'
+    		'content' => 'required|max:300'
     	]);
 
     	$message = new \App\Message();
@@ -21,5 +21,17 @@ class MessageController extends Controller
 
     	$message->save();
     	return redirect()->back()->with('success', 'The message has been delivered');
+    }
+
+    public function comment(Request $request){
+        $this->validate($request, [
+            'comment' => 'required|max:300'
+        ]);
+
+        $message = \App\Message::find($request->input('message-id'));
+        $message->comment = $request->input('comment');
+        $message->published = '1';
+        $message->save();
+        return redirect()->back();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -11,9 +12,18 @@ class UserController extends Controller
     	$this->middleware('auth');
     }
 
+    public function user()
+    {
+    	return redirect()->route('user.index', ['username' => Auth::user()->username]);
+    }
+
     public function index($username){
+    	if($username !== Auth::user()->username){
+    		return redirect()->route('home');
+    	}
     	$user = User::where('username', $username)->first();
-        $messages = $user->messages()->orderBy('created_at', 'DESC')->paginate(5);
-        return view('user.index')->with('user', $user)->with('messages', $messages);
+        $published = $user->messages()->where('published', '1')->orderBy('updated_at', 'DESC')->get();
+        $unpublished = $user->messages()->where('published', '0')->orderBy('created_at', 'DESC')->get();
+        return view('user.index')->with('user', $user)->with('published', $published)->with('unpublished', $unpublished);
     }
 }

@@ -30,6 +30,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if(Auth::check())
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user') }}">
+                                Account
+                            </a>
+                        </li>
                          <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
