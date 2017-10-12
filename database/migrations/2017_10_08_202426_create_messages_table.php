@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->enum('visibility', ['public', 'private'])->default('public');
             $table->boolean('published')->default('0');
             $table->text('comment')->nullable();
+            $table->string('code', 6)->unique();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
         });
