@@ -2,10 +2,13 @@
 #profile-info {
   margin-top: 16px;
   margin-bottom: 16px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 #profile-description {
-  padding: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   font-size: 1.2em;
 }
 
@@ -35,6 +38,10 @@
 
 .message textarea {
   margin-bottom: .5em;
+}
+
+.nopadding {
+  padding: 0px !important;
 }
 
 
@@ -80,6 +87,8 @@ main {
   main {
     font-size: 16px;
   }
+
+  
 }
 
 
@@ -91,5 +100,7 @@ main {
   main {
     font-size: 16px;
   }
+
+
 
 }

@@ -47,7 +47,7 @@
                             </form>
                         </li>
                     </ul>
-                @else
+                {{-- @else
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('login')}}">Login</a>
@@ -55,7 +55,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('register')}}">register</a>
                         </li>
-                    </ul>
+                    </ul> --}}
 
                 @endif
           </div>

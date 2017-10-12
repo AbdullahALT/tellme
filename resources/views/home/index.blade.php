@@ -37,7 +37,7 @@
 		<div id="message-list" class="col-md-12 col-lg-6 order-lg-1 order-md-2">
 			@if(count($messages) == 0)
 				<div class="alert alert-secondary">
-					There is no messages for you yet! 
+					There is no messages for {{$user->name}} yet! 
 				</div>
 			@endif
 			@foreach($messages as $message)
