@@ -23,10 +23,10 @@
 				<div class="form-group">
 					<textarea class="form-control" name="content" id="content" placeholder="Tell me something" rows="8"></textarea>
 					<div class="form-check">
-					<label class="form-check-label">
+					{{-- <label class="form-check-label">
 						<input type="checkbox" class="form-check-input" name="visibility" value="private">
 						Send as private 
-					</label>
+					</label> --}}
 				</div>
 				</div>
 				
