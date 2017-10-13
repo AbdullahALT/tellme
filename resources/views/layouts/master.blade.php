@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Twitter Cards-->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@nytimesbits" />
+    <meta name="twitter:creator" content="@abduiiahalt" />
+    <meta property="og:url" content="{{Request::url()}}" />
+    <meta property="og:title" content="Tell Me/ Abdullah ALT" />
+    <meta property="og:description" content="I hate Saraha, so I made my own personalized copy of it." />
+    <meta property="og:image" content="{{URL::to('image/users/bravely-default.jpg')}}" />
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
