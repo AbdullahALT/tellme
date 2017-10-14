@@ -3,7 +3,7 @@
 		<div class="message-content" dir="auto">
 			{{$message->content}}
 		</div>
-		<span class="message-date text-secondary float-right">{{$message->created_at}}</span>
+		<span class="message-date text-secondary float-right">{{date('Y/m/d h:ia', strtotime($message->created_at))}}</span>
 	</div>
 		<div class="message-comment bg-light"  dir="auto">
 			<form action="{{route('message.comment')}}" method="post">
