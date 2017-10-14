@@ -41,6 +41,15 @@ class MessageController extends Controller
         return redirect()->back();
     }
 
+    public function delete($id){
+        // $message = \App\Message::find($request->input('message-id'));
+        // $message->delete();
+        // return redirect()->back()->with('success', 'The message has been deleted');
+        $message = \App\Message::find($id);
+        $message->delete();
+        return redirect()->back()->with('success', 'The message has been deleted');
+    }
+
     private function getCode(){
         $flag = true;
         while($flag){

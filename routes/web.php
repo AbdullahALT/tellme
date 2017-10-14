@@ -21,6 +21,8 @@ Route::post('/message/comment', [
 	'as' => 'message.comment'
 ]);
 
+Route::post('/message/delete/{id}', 'MessageController@delete')->name('message.delete');
+
 Route::get('/user/{username}', 'UserController@index')->name('user.index');
 
 Route::get('/user', 'UserController@user')->name('user');
@@ -30,6 +32,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/{username}', 'HomeController@profile')->name('profile.public');
+
+
 
 
 

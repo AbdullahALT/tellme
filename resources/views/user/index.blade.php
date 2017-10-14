@@ -8,6 +8,11 @@
 		<div id="message-list" class="col-md-12 col-lg-6  order-lg-2 order-md-1 ">
 			<h4>Unpublished</h4>
 			<hr>
+			@if(Session::has('success'))
+				<div class="alert alert-success">
+					{{Session::get('success')}}
+				</div>
+			@endif
 			@if(count($unpublished) == 0)
 				<div class="alert alert-secondary">
 					There is no messages for you yet! 
@@ -31,6 +36,29 @@
 				@include('partials.message')
 			@endforeach
 		</div>
+	</div>
+
+	<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteTitle" aria-hidden="true">
+	  	<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<h5 class="modal-title" id="confirmDeleteTitle">Confirm Delete</h5>
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          			<span aria-hidden="true">&times;</span>
+	        		</button>
+	      		</div>
+	      		<div class="modal-body">
+	        		You sure you want to delete this message?
+	      		</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        		<form method="post" id="deleteForm" class="d-inline">
+	        			{!!csrf_field()!!}
+	        			<button type="submit" class="btn btn-danger">Delete</button>
+	        		</form>
+	      		</div>
+	    	</div>
+	  	</div>
 	</div>
 
 @endsection
@@ -57,6 +85,18 @@
 				}
 				
 			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#confirmDelete').on('show.bs.modal', function(e) {
+				
+			  	var data = $(e.relatedTarget).data();
+			  	$('.modal-body', this).text(data.message);
+			  	$('#deleteForm').attr('action', data.link);
+			  	
+			});
+
 		});
 	</script>
 @endsection
