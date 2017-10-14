@@ -21,13 +21,14 @@
 				{{ csrf_field() }}
 				<input type="hidden" name="user_id" value="{{$user->id}}">
 				<div class="form-group">
-					<textarea class="form-control" name="content" id="content" placeholder="Tell me something" rows="8"></textarea>
-					<div class="form-check">
-					{{-- <label class="form-check-label">
-						<input type="checkbox" class="form-check-input" name="visibility" value="private">
-						Send as private 
-					</label> --}}
-				</div>
+					<textarea class="form-control" name="content" id="content" placeholder="Tell me something" rows="8" maxlength="300"></textarea>
+					{{-- <div class="form-check">
+						<label class="form-check-label">
+							<input type="checkbox" class="form-check-input" name="visibility" value="private">
+							Send as private 
+						</label>
+					</div> --}}
+					<span id="counter"></span>
 				</div>
 				
 				<button type="submit" class="btn btn-dark">Submit</button> 
@@ -48,4 +49,19 @@
 
 	</div>
 
+@endsection
+
+@section('scripts')
+	{{-- Counter for textarea --}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// inilize counter with the value of the text
+			$('#counter').text(300 - $('textarea').val().length);
+
+			$('textarea').keyup(function(){
+				var length = $(this).val().length;
+				$('#counter').text(300 - length);
+			});
+		});
+	</script>
 @endsection
