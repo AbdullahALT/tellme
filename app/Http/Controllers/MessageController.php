@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\MessageNotification;
 use App\Message;
 
 class MessageController extends Controller
@@ -12,11 +13,11 @@ class MessageController extends Controller
     		'content' => 'required|max:300'
     	]);
 
+        $user = \App\User::find($request->input('user_id'));
         $code = $this->getCode();
 
     	$message = new \App\Message();
     	$message->content = $request->input('content');
-    	$message->user_id = $request->input('user_id');
         $message->code = $code;
     	
         $append = '';
@@ -25,7 +26,9 @@ class MessageController extends Controller
             $append = '. your message code is ' . $code . ', use it to see if it has been commntted to';
     	}
 
+        $user->messages()->save($message);
     	$message->save();
+        $user->notify(new MessageNotification($message));
     	return redirect()->back()->with('success', 'The message has been delivered' . $append);
     }
 
@@ -42,9 +45,6 @@ class MessageController extends Controller
     }
 
     public function delete($id){
-        // $message = \App\Message::find($request->input('message-id'));
-        // $message->delete();
-        // return redirect()->back()->with('success', 'The message has been deleted');
         $message = \App\Message::find($id);
         $message->delete();
         return redirect()->back()->with('success', 'The message has been deleted');
