@@ -43,9 +43,11 @@ class MessageNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $user = $this->message->user;
+        $url = route('user.index', ['username' => $user->username]);
         return (new MailMessage)
-                    ->line('The following message was sent to you:')
-                    ->line($this->message->content);
+                    ->line($this->message->content)
+                    ->action('Comment', $url);
     }
 
     /**
