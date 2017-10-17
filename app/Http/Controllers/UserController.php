@@ -12,11 +12,6 @@ class UserController extends Controller
     	$this->middleware('auth');
     }
 
-    public function user()
-    {
-    	return redirect()->route('user.index', ['username' => Auth::user()->username]);
-    }
-
     public function index($username){
     	if($username !== Auth::user()->username){
     		return redirect()->route('home');
