@@ -25,8 +25,6 @@ Route::group(['prefix' => '/message'], function(){
 	Route::post('/delete/{id}', 'MessageController@delete')->name('message.delete');
 });
 
-Route::get('/{username}/user', 'UserController@index')->name('user.index');
-
 Route::group(['prefix' => '/home'], function(){
 	Auth::routes();
 
@@ -34,6 +32,8 @@ Route::group(['prefix' => '/home'], function(){
 });
 
 Route::get('/{username}', 'HomeController@profile')->name('profile.public');
+
+Route::get('/{username}/user', 'UserController@index')->name('user.index');
 
 Route::get('/', 'HomeController@index')->name('home');
 
