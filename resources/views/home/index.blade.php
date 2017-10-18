@@ -15,19 +15,24 @@
 </div>
 
 <div class="row on-floor">
-	<div class="col-lg-4 col-md-12 py-3">
-		<h4>Recive messages</h4>
-		<p>People may have something to tell you, they are just shy to say it in your face</p>
+	<div class="col-lg-4 col-md-12 py-3">	
+		<img src="{{URL::to('image/icons/ic_message.png')}}" class="img-fluid d-inline">
+		<h5 class="d-inline">Recive messages</h5>
+		<p>People may have something to tell you, they are just shy to say it in your face</p>	
 	</div>
-	<div class="col-lg-4 col-md-12 py-3">
-		<h4>Response to messages</h4>
+	<div class="col-lg-4 col-md-12 py-3">	
+		<img src="{{URL::to('image/icons/ic_response.png')}}" class="img-fluid d-inline">
+		<h5 class="d-inline">Response to messages</h5>
 		<p>No need for sharing what you recived on twitter, you might get unfollowed</p>
 	</div>
 	<div class="col-lg-4 col-md-12 py-3">
-		<h4>Delete messages</h4>
+		<img src="{{URL::to('image/icons/ic_delete.png')}}" class="img-fluid d-inline">
+		<h5 class="d-inline">Delete messages</h5>
 		<p>Oh crap this message is hating me! I'll just delete it and nothing has happend</p>
 	</div>
 </div>
+
+
 
 @endsection
 
