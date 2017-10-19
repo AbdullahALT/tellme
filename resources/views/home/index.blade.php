@@ -8,10 +8,12 @@
 	<p class="lead">What secrets will people tell you anonymously?</p>
 	<hr class="my-4">
 	<p>This application is only built to prove its creator skills on job interviews. No guarantee this application will countinoue its life for long and no guarantee for your information recovery. please note that before registering and using Tell Me</p>
-	<p class="lead">
-		<a class="btn btn-dark btn-lg d-inline-block" href="{{route('login')}}" role="btn">Log in</a>
-		<a class="btn btn-dark btn-lg d-inline-block" href="{{route('register')}}" role="btn">Register</a>
-	</p>
+	@if(!Auth::check())
+		<p class="lead">
+			<a class="btn btn-dark btn-lg d-inline-block" href="{{route('login')}}" role="btn">Log in</a>
+			<a class="btn btn-dark btn-lg d-inline-block" href="{{route('register')}}" role="btn">Register</a>
+		</p>
+	@endif
 </div>
 
 <div class="row on-floor">
