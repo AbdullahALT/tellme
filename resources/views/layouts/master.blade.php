@@ -41,18 +41,16 @@
     <head>
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            @if(Route::currentRouteName() != 'home')
-                <a class="navbar-brand" href="{{route('home')}}">Tell Me</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{{route('home')}}">Tell Me</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-            @endif
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if(Auth::check())
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item{{Route::currentRouteName() == 'user' ? ' active' : ''}}">
-                            <a class="nav-link" href="{{ route('user') }}">
+                            <a class="nav-link" href="{{ route('user.index', ['username' => Auth::user()->username]) }}">
                                 Account 
                             </a>
                         </li>
