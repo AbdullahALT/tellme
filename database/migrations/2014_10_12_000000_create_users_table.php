@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar', 20)->nullable();
             $table->string('bio', 300)->nullable();
             $table->boolean('mail_notify')->default('1');
+            $table->boolean('auto_publish')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
