@@ -21,4 +21,12 @@ class UserController extends Controller
         $unpublished = $user->messages()->where('published', '0')->orderBy('created_at', 'DESC')->get();
         return view('user.index')->with('user', $user)->with('published', $published)->with('unpublished', $unpublished);
     }
+
+    public function settings($username){
+        if($username !== Auth::user()->username){
+            return redirect()->route('home');
+        }
+        $user = User::where('username', $username)->first();
+        return view('user.settings')->with('user', $user);
+    }
 }

@@ -52,7 +52,7 @@
                 @if(Auth::check())
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item{{Route::currentRouteName() == 'user' ? ' active' : ''}}">
-                            <a class="nav-link" href="{{ route('user') }}">
+                            <a class="nav-link" href="{{ route('user.index', ['username' => Auth::user()->username]) }}">
                                 Account 
                             </a>
                         </li>
