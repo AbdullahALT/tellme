@@ -10,8 +10,8 @@
 	<p>This application is only built to prove its creator skills on job interviews. No guarantee this application will countinoue its life for long and no guarantee for your information recovery. please note that before registering and using Tell Me</p>
 	@if(!Auth::check())
 		<p class="lead">
-			<a class="btn btn-dark btn-lg d-inline-block" href="{{route('login')}}" role="btn">Log in</a>
-			<a class="btn btn-dark btn-lg d-inline-block" href="{{route('register')}}" role="btn">Register</a>
+			<a class="btn btn-primary btn-lg d-inline-block" href="{{route('login')}}" role="btn">Log in</a>
+			<a class="btn btn-primary btn-lg d-inline-block" href="{{route('register')}}" role="btn">Register</a>
 		</p>
 	@endif
 </div>

@@ -6,3 +6,24 @@
 .page-link {
   color: #343A40;
 }
+
+.btn-primary {
+	color: #fff;
+	background-color: #3289C8;
+	border-color: #3289C8;
+}
+
+.btn-primary:focus, .btn-primary:hover {
+	background-color: #286da0;
+	border-color: #286da0;
+}
+
+.btn-link {
+	font-weight: 400;
+	color: #3289C8;
+	border-radius: 0;
+}
+
+.btn-link:focus, .btn-link:hover {
+	color: #286da0;
+}

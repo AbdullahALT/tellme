@@ -74,9 +74,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group row">
                             <div class="col-md-8">
-                                <button type="submit" class="btn btn-dark">
+                                <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
                             </div>
