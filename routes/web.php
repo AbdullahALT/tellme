@@ -35,6 +35,10 @@ Route::get('/{username}', 'HomeController@profile')->name('profile.public');
 
 Route::get('/{username}/user', 'UserController@index')->name('user.index');
 
+Route::get('/{username}/settings', 'UserController@settings')->name('user.settings');
+
+Route::post('/{username}/settings', 'UserController@postSettings')->name('user.settings.post');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 

@@ -30,4 +30,18 @@ class User extends Authenticatable
     public function messages(){
         return $this->hasMany('App\Message', 'user_id');
     }
+
+    public function getAvatarAttribute($value){
+        if($value == null){
+            return "user-default.png";
+        }
+        return $value;
+    }
+
+    public function getBioAttribute($value){
+        if($value == null){
+            return "Tell me a secret!";
+        }
+        return $value;
+    }
 }
