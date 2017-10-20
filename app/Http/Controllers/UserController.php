@@ -10,12 +10,11 @@ class UserController extends Controller
 {
     public function __construct(){
     	$this->middleware('auth');
+        $this->middleware('userArea');
     }
 
     public function index($username){
-    	if($username !== Auth::user()->username){
-    		return redirect()->route('home');
-    	}
+    	
     	$user = User::where('username', $username)->first();
         $published = $user->messages()->where('published', '1')->orderBy('updated_at', 'DESC')->get();
         $unpublished = $user->messages()->where('published', '0')->orderBy('created_at', 'DESC')->get();
@@ -23,9 +22,7 @@ class UserController extends Controller
     }
 
     public function settings($username){
-        if($username !== Auth::user()->username){
-            return redirect()->route('home');
-        }
+        
         $user = User::where('username', $username)->first();
         return view('user.settings')->with('user', $user);
     }
