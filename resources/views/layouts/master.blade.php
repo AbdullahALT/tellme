@@ -51,9 +51,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @if(Auth::check())
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item{{Route::currentRouteName() == 'user' ? ' active' : ''}}">
+                        <li class="nav-item{{Route::currentRouteName() == 'user.index' ? ' active' : ''}}">
                             <a class="nav-link" href="{{ route('user.index', ['username' => Auth::user()->username]) }}">
                                 Account 
+                            </a>
+                        </li>
+                        <li class="nav-item{{Route::currentRouteName() == 'user.settings' ? ' active' : ''}}">
+                            <a class="nav-link" href="{{ route('user.settings', ['username' => Auth::user()->username]) }}">
+                                Settings 
                             </a>
                         </li>
                          <li class="nav-item">

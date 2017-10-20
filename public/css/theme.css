@@ -12,6 +12,10 @@
   color: #343A40;
 }
 
+.form-text {
+	font-size: 0.75rem;
+}
+
 /*Inhancements for input file*/
 /*taken from: https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/*/
 .inputfile {
