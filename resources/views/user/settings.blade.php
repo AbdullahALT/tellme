@@ -35,7 +35,13 @@
 								<span>Change Avatar</span>
 							</label>
 							<input id="avatar-change" name="avatar-change" type="hidden" value="0">
+							@if($errors->has('avatar'))
+	                            <span class="form-text text-danger">
+	                                <strong>{{ $errors->first('avatar') }}</strong>
+	                            </span>
+	                        @endif
 						</div>
+						
 					</div>
 					<div class="form-group row{{ $errors->has('name') ? ' has-danger' : '' }}">
 						<label for="username" class="col-md-2 col-form-label">Username</label>

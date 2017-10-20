@@ -37,6 +37,7 @@ class UserController extends Controller
             'username' => 'required|string|min:2|max:15|unique:users,username,' . $user_id ,
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user_id,
+            'avatar' => 'max:10240'
         ]);
 
         $user = \App\User::find($user_id);
