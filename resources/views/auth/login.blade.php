@@ -1,12 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.card')
 
-@section('content')
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-8">
-            <div class="card my-4">
-                <div class="card-header">Login</div>
+@section('header', 'Login')
 
-                <div class="card-body">
+@section('body')
+    
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -56,8 +53,5 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
+

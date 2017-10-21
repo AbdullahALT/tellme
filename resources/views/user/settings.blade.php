@@ -1,20 +1,8 @@
-@extends('layouts.master')
+@extends('layouts.card')
 
-@section('content')
+@section('header', 'Settings')
 
-<div class="row my-4 d-flex justify-content-center">
-	{{-- <div class="col-lg-2 col-md-12">
-		<div class="card">
-			<img class="card-img-top" src="{{URL::to('image/users/' . $user->avatar )}}">
-			<div class="card-body">
-				
-			</div>
-		</div>
-	</div> --}}
-	<div class="col-md-8">
-		<div class="card my-4">
-			<div class="card-header"> Settings </div>
-			<div class="card-body">
+@section('body')
 				@if(Session::has('success'))
 					<div class="alert alert-success">
 						<p> {{Session::get('success')}} </p>
@@ -122,10 +110,6 @@
 
 					<button type="submit" class="btn btn-primary"> Save Changes </button>
 				</form>
-			</div>
-		</div>
-	</div>
-</div>
 
 @endsection
 
