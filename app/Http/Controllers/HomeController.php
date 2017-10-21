@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function profile($username){
         $user = User::where('username', $username)->first();
         if(!$user){
-            return "No User!";
+            abort(404, 'we don\'t recognize "' . $username . '" as a username, the user you\'re looking for might have change it! "yes we support that, kid\'s play"');
         }
         $messages = $user->messages()->where('published', '1')->orderBy('created_at', 'DESC')->paginate(10);
         return view('home.profile')->with('user', $user)->with('messages', $messages);
