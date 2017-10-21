@@ -29,6 +29,10 @@ Route::group(['prefix' => '/home'], function(){
 	Auth::routes();
 
 	Route::get('/redirect', 'HomeController@redirect')->name('redirect');
+
+	Route::get('/contact', 'HomeController@contact')->name('contact');
+
+	Route::post('/contact', 'HomeController@postContact')->name('contact.post');
 });
 
 Route::get('/{username}', 'HomeController@profile')->name('profile.public');

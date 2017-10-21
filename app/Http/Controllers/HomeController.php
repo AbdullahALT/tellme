@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\Contact;
 
 class HomeController extends Controller
 {
@@ -45,5 +47,20 @@ class HomeController extends Controller
         }
         $messages = $user->messages()->where('published', '1')->orderBy('created_at', 'DESC')->paginate(10);
         return view('home.profile')->with('user', $user)->with('messages', $messages);
+    }
+
+    public function contact(){
+        return view('home.contact');
+    }
+
+    public function postContact(Request $request){
+        $this->validate($request, [
+            'email' => 'email',
+            'message' => 'required'
+        ]);
+        //Should be improved! instead of sending to a specific address, take from user database users with a fitting role
+        $user = \App\User::find(1);
+        Notification::send($user, new Contact($request));
+        return redirect()->back()->with('success', 'We got your message, you have our thanks for contacting us!');
     }
 }

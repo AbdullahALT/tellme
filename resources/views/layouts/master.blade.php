@@ -47,8 +47,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                @if(Auth::check())
-                    <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto">
+                    @if(Auth::check())
                         <li class="nav-item{{Route::currentRouteName() == 'user.index' ? ' active' : ''}}">
                             <a class="nav-link" href="{{ route('user.index', ['username' => Auth::user()->username]) }}">
                                 Account 
@@ -70,19 +70,20 @@
                                 {{ csrf_field() }}
                             </form>
                         </li>
-                    </ul>
-                @else 
-                    @if(Route::currentRouteName() != 'home')
-                        <ul class="navbar-nav mr-auto">
+                    @else 
+                        @if(Route::currentRouteName() != 'home')
                             <li class="nav-item{{Route::currentRouteName() == 'login' ? ' active' : ''}}">
                                 <a class="nav-link" href="{{route('login')}}">Login</a>
                             </li>
                             <li class="nav-item{{Route::currentRouteName() == 'register' ? ' active' : ''}}">
                                 <a class="nav-link" href="{{route('register')}}">register</a>
                             </li>
-                        </ul>
+                        @endif
                     @endif
-                @endif
+                    <li class="nav-item{{Route::currentRouteName() == 'contact' ? ' active' : ''}}">
+                        <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+                    </li>
+                </ul>
           </div>
         </nav>
     </head>
