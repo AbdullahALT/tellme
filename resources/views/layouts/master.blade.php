@@ -42,18 +42,21 @@
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="{{route('home')}}">Tell Me</a>
-            @if(Auth::check())
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>
-            @endif
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                @if(Auth::check())
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user') }}">
-                                Account
+                <ul class="navbar-nav mr-auto">
+                    @if(Auth::check())
+                        <li class="nav-item{{Route::currentRouteName() == 'user.index' ? ' active' : ''}}">
+                            <a class="nav-link" href="{{ route('user.index', ['username' => Auth::user()->username]) }}">
+                                Account 
+                            </a>
+                        </li>
+                        <li class="nav-item{{Route::currentRouteName() == 'user.settings' ? ' active' : ''}}">
+                            <a class="nav-link" href="{{ route('user.settings', ['username' => Auth::user()->username]) }}">
+                                Settings 
                             </a>
                         </li>
                          <li class="nav-item">
@@ -67,18 +70,20 @@
                                 {{ csrf_field() }}
                             </form>
                         </li>
-                    </ul>
-                {{-- @else
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('register')}}">register</a>
-                        </li>
-                    </ul> --}}
-
-                @endif
+                    @else 
+                        @if(Route::currentRouteName() != 'home')
+                            <li class="nav-item{{Route::currentRouteName() == 'login' ? ' active' : ''}}">
+                                <a class="nav-link" href="{{route('login')}}">Login</a>
+                            </li>
+                            <li class="nav-item{{Route::currentRouteName() == 'register' ? ' active' : ''}}">
+                                <a class="nav-link" href="{{route('register')}}">register</a>
+                            </li>
+                        @endif
+                    @endif
+                    <li class="nav-item{{Route::currentRouteName() == 'contact' ? ' active' : ''}}">
+                        <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+                    </li>
+                </ul>
           </div>
         </nav>
     </head>

@@ -1,67 +1,40 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="jumbotron my-4">
+	<h1 >
+		Tell Me
+	</h1>
+	<p class="lead">What secrets will people tell you anonymously?</p>
+	<hr class="my-4">
+	{{-- <p>This application is only built to prove its creator skills on job interviews. No guarantee this application will countinoue its life for long and no guarantee for your information recovery. please note that before registering and using Tell Me</p> --}}
+	@if(!Auth::check())
+		<p class="lead">
+			<a class="btn btn-primary btn-lg d-inline-block" href="{{route('login')}}" role="btn">Log in</a>
+			<a class="btn btn-primary btn-lg d-inline-block" href="{{route('register')}}" role="btn">Register</a>
+		</p>
+	@endif
+</div>
 
-	@include('partials.profile')
-
-	<div class="row">
-
-		<div id="message-write" class="col-md-12 col-lg-6 order-lg-2 order-md-1">
-			@if($errors->has('content'))
-				<div class="alert alert-danger">
-					<strong>Failed: </strong> {{$errors->first('content')}}
-				</div>
-			@endif
-			@if(Session::has('success'))
-				<div class="alert alert-success">
-					{{Session::get('success')}}
-				</div>
-			@endif
-			<form action="{{route('message.create')}}" method="post">
-				{{ csrf_field() }}
-				<input type="hidden" name="user_id" value="{{$user->id}}">
-				<div class="form-group">
-					<textarea class="form-control" name="content" id="content" placeholder="Tell me something" rows="8" maxlength="300" dir="auto"></textarea>
-					{{-- <div class="form-check">
-						<label class="form-check-label">
-							<input type="checkbox" class="form-check-input" name="visibility" value="private">
-							Send as private 
-						</label>
-					</div> --}}
-					<span id="counter"></span>
-				</div>
-				
-				<button type="submit" class="btn btn-dark">Submit</button> 
-			</form>
-		</div>
-
-		<div id="message-list" class="col-md-12 col-lg-6 order-lg-1 order-md-2">
-			@if(count($messages) == 0)
-				<div class="alert alert-secondary">
-					There is no messages for {{$user->name}} yet! 
-				</div>
-			@endif
-			@foreach($messages as $message)
-				@include('partials.message')
-			@endforeach
-			{{$messages->links()}}
-		</div>
-
+<div class="row on-floor">
+	<div class="col-lg-4 col-md-12 py-3">	
+		<img src="{{URL::to('image/icons/ic_message.png')}}" class="img-fluid d-inline">
+		<h5 class="d-inline">Recive messages</h5>
+		<p>People may have something to tell you, they are just shy to say it in your face</p>	
 	</div>
+	<div class="col-lg-4 col-md-12 py-3">	
+		<img src="{{URL::to('image/icons/ic_response.png')}}" class="img-fluid d-inline">
+		<h5 class="d-inline">Response to messages</h5>
+		<p>No need for sharing what you recived on twitter, you might get unfollowed</p>
+	</div>
+	<div class="col-lg-4 col-md-12 py-3">
+		<img src="{{URL::to('image/icons/ic_delete.png')}}" class="img-fluid d-inline">
+		<h5 class="d-inline">Delete messages</h5>
+		<p>Oh crap this message is hating me! I'll just delete it and nothing has happend</p>
+	</div>
+</div>
+
+
 
 @endsection
 
-@section('scripts')
-	{{-- Counter for textarea --}}
-	<script type="text/javascript">
-		$(document).ready(function(){
-			// inilize counter with the value of the text
-			$('#counter').text(300 - $('textarea').val().length);
-
-			$('textarea').keyup(function(){
-				var length = $(this).val().length;
-				$('#counter').text(300 - length);
-			});
-		});
-	</script>
-@endsection

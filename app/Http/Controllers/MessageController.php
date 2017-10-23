@@ -26,9 +26,17 @@ class MessageController extends Controller
             $append = '. your message code is ' . $code . ', use it to see if it has been commntted to';
     	}
 
+        if($user->auto_publish == 1){
+            $message->published = '1';
+        }
+
         $user->messages()->save($message);
     	$message->save();
-        $user->notify(new MessageNotification($message));
+
+        if($user->mail_notify == 1){
+            $user->notify(new MessageNotification($message));
+        }
+        
     	return redirect()->back()->with('success', 'The message has been delivered' . $append);
     }
 

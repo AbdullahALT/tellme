@@ -11,27 +11,40 @@
 |
 */
 
-Route::post('/message/create', [
-	'uses' => 'MessageController@create',
-	'as' => 'message.create'
-]);
+Route::group(['prefix' => '/message'], function(){
+	Route::post('/create', [
+		'uses' => 'MessageController@create',
+		'as' => 'message.create'
+	]);
 
-Route::post('/message/comment', [
-	'uses' => 'MessageController@comment',
-	'as' => 'message.comment'
-]);
+	Route::post('/comment', [
+		'uses' => 'MessageController@comment',
+		'as' => 'message.comment'
+	]);
 
-Route::post('/message/delete/{id}', 'MessageController@delete')->name('message.delete');
+	Route::post('/delete/{id}', 'MessageController@delete')->name('message.delete');
+});
 
-Route::get('/user/{username}', 'UserController@index')->name('user.index');
+Route::group(['prefix' => '/home'], function(){
+	Auth::routes();
 
-Route::get('/user', 'UserController@user')->name('user');
+	Route::get('/redirect', 'HomeController@redirect')->name('redirect');
+
+	Route::get('/contact', 'HomeController@contact')->name('contact');
+
+	Route::post('/contact', 'HomeController@postContact')->name('contact.post');
+});
+
+Route::get('/{username}', 'HomeController@profile')->name('profile.public');
+
+Route::get('/{username}/user', 'UserController@index')->name('user.index');
+
+Route::get('/{username}/settings', 'UserController@settings')->name('user.settings');
+
+Route::post('/{username}/settings', 'UserController@postSettings')->name('user.settings.post');
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/{username}', 'HomeController@profile')->name('profile.public');
 
 
 
